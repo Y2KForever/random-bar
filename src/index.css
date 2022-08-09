@@ -1,0 +1,92 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  font-family: "MADE TOMMY";
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100vh;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("/src/assets/fonts/MADETOMMY-Black.woff2") format("woff2"),
+    url("/src/assets/fonts/MADETOMMY-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("MADETOMMY-Medium.woff2") format("woff2"),
+    url("MADETOMMY-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("../assets/fonts/MADETOMMY.woff2") format("woff2"),
+    url("../src/assets/fonts/MADETOMMY.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("MADETOMMY-Thin.woff2") format("woff2"),
+    url("MADETOMMY-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("MADETOMMY-Light.woff2") format("woff2"),
+    url("MADETOMMY-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("MADETOMMY-ExtraBold.woff2") format("woff2"),
+    url("MADETOMMY-ExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MADE TOMMY";
+  src: url("MADETOMMY-Bold.woff2") format("woff2"),
+    url("MADETOMMY-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
