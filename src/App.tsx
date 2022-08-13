@@ -1,23 +1,52 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { Wrapper } from "@googlemaps/react-wrapper";
+import React, { CSSProperties, useState } from "react";
 import "./index.css";
+import { Button, Box, Styles, ActionIcon } from "@mantine/core";
 
-import { Map } from "./components/Map";
-import { Button, Drawer } from "@mantine/core";
-import { useState } from "react";
+import { ReactComponent as Menu } from "./assets/icons/align-justify-2.svg";
+
+import { MapWrapper } from "./components/MapWrapper";
+import { Drawer } from "./components/Drawer";
+
+const BoxStyle: CSSProperties = {
+  zIndex: 1,
+  position: "absolute",
+  background: "transparent",
+  width: 50,
+  height: 50,
+};
 
 function App() {
   const [opened, setOpened] = useState<boolean>(false);
+  const [lat, setLat] = useState<number>(59.3366156);
+  const [lng, setLng] = useState<number>(18.0698471);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
   return (
     <>
-      <Drawer opened={opened} onClose={() => setOpened(false)}></Drawer>
-      <Wrapper apiKey="AIzaSyCpX4I27e-tWIns8PRakXqkcPSqKuNPP1o">
-        <Map
-          center={{ lat: 59.3366156, lng: 18.0698471 }}
-          zoom={15}
-          setOpened={setOpened}
-        />
-      </Wrapper>
+      <Drawer
+        map={map}
+        setLat={setLat}
+        setLng={setLng}
+        lng={lng}
+        lat={lat}
+        opened={opened}
+        setOpened={setOpened}
+      />
+      <Box style={BoxStyle}>
+        <ActionIcon
+          variant="subtle"
+          onClick={() => setOpened(!opened)}
+          style={{
+            height: 50,
+            width: 50,
+            borderRadius: 0,
+            borderBottomRightRadius: 8,
+          }}
+        >
+          <Menu />
+        </ActionIcon>
+      </Box>
+      <MapWrapper map={map} setMap={setMap} lat={lat} lng={lng} />
     </>
   );
 }
