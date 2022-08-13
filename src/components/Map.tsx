@@ -8,11 +8,11 @@ interface IMap {
   setMap: (map: google.maps.Map) => void;
 }
 
-export const Map = ({ center, zoom, setMap }: IMap) => {
+export const Map = ({ center, zoom, setMap, map }: IMap) => {
   const ref: any = useRef();
 
   useEffect(() => {
-    const map = new window.google.maps.Map(ref.current, {
+    const newMap = new window.google.maps.Map(ref.current, {
       center,
       zoom,
       disableDefaultUI: true,
@@ -20,8 +20,14 @@ export const Map = ({ center, zoom, setMap }: IMap) => {
       keyboardShortcuts: false,
       styles: [
         { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+        {
+          elementType: "labels.text.stroke",
+          stylers: [{ color: "#242f3e" }],
+        },
+        {
+          elementType: "labels.text.fill",
+          stylers: [{ color: "#746855" }],
+        },
         {
           featureType: "administrative.locality",
           elementType: "labels.text.fill",
@@ -99,8 +105,10 @@ export const Map = ({ center, zoom, setMap }: IMap) => {
         },
       ],
     });
-    setMap(map);
-  }, []);
+    if (map === null && map !== newMap) {
+      setMap(newMap);
+    }
+  });
 
   return <div ref={ref} id="map" style={{ height: "100vh" }}></div>;
 };

@@ -125,6 +125,7 @@ export const Drawer = ({
       };
       service.nearbySearch(req, (res, status) => {
         // HANDLE RESULT, AND RANDOMIZE A BAR, THEN MARK IT ON MAP.
+        // SHOULD ALSO REMAKE UI LUL
       });
     }
   };
