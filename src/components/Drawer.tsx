@@ -130,6 +130,7 @@ export const Drawer = () => {
       onClose={() => context.setOpened(!context.opened)}
     >
       <Container>
+        {/* ADD SEARCH CAPABILITY */}
         <Input.Wrapper
           label="Location"
           description="Press button or set manual location"

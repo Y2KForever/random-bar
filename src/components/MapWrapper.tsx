@@ -5,7 +5,6 @@ import { Map } from "./Map";
 import { Marker } from "./Marker";
 
 import pinIcon from "../assets/icons/pin-3-filled.svg";
-import { Button, Popover, Text } from "@mantine/core";
 import { Context } from "../App";
 import { IContext } from "../interface/interface";
 

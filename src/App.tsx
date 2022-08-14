@@ -1,10 +1,5 @@
 /// <reference types="vite-plugin-svgr/client" />
-import React, {
-  CSSProperties,
-  useState,
-  useContext,
-  createContext,
-} from "react";
+import React, { CSSProperties, useState, createContext } from "react";
 import "./index.css";
 import { Box, ActionIcon, Loader } from "@mantine/core";
 
@@ -12,7 +7,6 @@ import { ReactComponent as Menu } from "./assets/icons/align-justify-2.svg";
 
 import { MapWrapper } from "./components/MapWrapper";
 import { Drawer } from "./components/Drawer";
-import { start } from "repl";
 
 const BoxStyle: CSSProperties = {
   zIndex: 1,
