@@ -40,11 +40,24 @@ export const Drawer = ({
           var geocoder = new google.maps.Geocoder();
           geocoder.geocode(
             {
-              location: new google.maps.LatLng(lat, lng),
+              location: new google.maps.LatLng(
+                pos.coords.latitude,
+                pos.coords.longitude
+              ),
             },
             (res, status) => {
-              if (status === "OK") {
-                // ADD MARKER HERE.
+              if (status === "OK" && res && res.length > 0) {
+                if (map) {
+                  map.setCenter({
+                    lat: res[0].geometry.location.lat(),
+                    lng: res[0].geometry.location.lng(),
+                  });
+                }
+              } else {
+                showNotification({
+                  title: "Error",
+                  message: "Something went wrong. Please try again",
+                });
               }
             }
           );

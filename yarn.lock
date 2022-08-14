@@ -378,6 +378,11 @@
   dependencies:
     "@googlemaps/js-api-loader" "^1.13.2"
 
+"@googlemaps/typescript-guards@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@googlemaps/typescript-guards/-/typescript-guards-2.0.1.tgz#0ca9c3d9c1f5460ae42da3b0f0741acf3e1bf403"
+  integrity sha512-e2nkQGDD0QOfzvc68DBxYTELZIV55+0LZzKPQ1FDb7JzSUwcL9Cpg8y/aWZsYsUzICG+aw3YaqkqYPQLTvbcaQ==
+
 "@honkhonk/vite-plugin-svgr@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@honkhonk/vite-plugin-svgr/-/vite-plugin-svgr-1.1.0.tgz#8af2c91f52e12798f795085f3cfad5bc4cda0f43"
@@ -1266,6 +1271,11 @@ fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
+
+fast-equals@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/fast-equals/-/fast-equals-4.0.1.tgz#ff8f92d18f4f4130ce6fbd3748ef714d01cd0893"
+  integrity sha512-OXqyj3MD0p8Kee16Jz7CbCnXo+5CHKKu4xBh5UhC1NbmMkHn8WScLRy/B2q5UOlWMlNSQJc4mwXW30Lz+JUZJw==
 
 find-root@^1.1.0:
   version "1.1.0"
