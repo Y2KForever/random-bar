@@ -21,7 +21,7 @@ export const Context: any = createContext(null);
 function App(props: any) {
   const [loading, setLoading] = useState<boolean>(false);
   const [opened, setOpened] = useState<boolean>(false);
-  const [startLat, setStartLat] = useState<number>(59.33665973999843);
+  const [startLat] = useState<number>(59.33665973999843);
   const [startLng] = useState<number>(18.072035178187637);
   const [lat, setLat] = useState<number | undefined>(undefined);
   const [lng, setLng] = useState<number | undefined>(undefined);

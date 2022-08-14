@@ -27,7 +27,7 @@ export const MapWrapper = () => {
   return (
     <Wrapper
       apiKey="AIzaSyCpX4I27e-tWIns8PRakXqkcPSqKuNPP1o"
-      libraries={["places"]}
+      libraries={["places", "geometry", "localContext"]}
       render={render}
     >
       <Map

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { showNotification } from "@mantine/notifications";
 import {
   Button,
@@ -8,6 +8,7 @@ import {
   Input,
   Slider,
 } from "@mantine/core";
+import { useDebouncedValue } from "@mantine/hooks";
 
 import { Context } from "../App";
 import { IContext } from "../interface/interface";
@@ -17,12 +18,39 @@ import { ReactComponent as MapPinIcon } from "../assets/icons/pin-3.svg";
 import { ReactComponent as ErrorIcon } from "../assets/icons/cross-circle.svg";
 
 export const Drawer = () => {
+  const inputRef = useRef<any>(null);
   const [distance, setDistance] = useState<number>(1);
+  const [locations, setLocations] = useState<any[] | null>(null);
+  const [manualLocation, setManualLocation] = useState<string>("");
+  const [debouncedLocation] = useDebouncedValue(manualLocation, 600);
   const context: IContext = useContext(Context);
 
   if (!context) {
     return <></>;
   }
+
+  useEffect(() => {
+    if (window.google && context.map && debouncedLocation !== "") {
+      const x = new google.maps.places.AutocompleteService();
+      x.getPlacePredictions(
+        {
+          input: debouncedLocation,
+        },
+        (res, status) => {
+          if (status === "OK" && res && res.length > 0) {
+            setLocations(res);
+          } else {
+            if (res === null) {
+              showNotification({
+                title: "Error",
+                message: "Could not find address",
+              });
+            }
+          }
+        }
+      );
+    }
+  }, [debouncedLocation]);
 
   useEffect(() => {
     const circle =
@@ -139,7 +167,16 @@ export const Drawer = () => {
             marginBottom: 10,
           }}
         >
-          <Input icon={<MapPinIcon />} variant="filled" radius="md" />
+          <Input
+            ref={inputRef}
+            value={manualLocation}
+            onChange={(event: any) =>
+              setManualLocation(event.currentTarget.value)
+            }
+            icon={<MapPinIcon />}
+            variant="filled"
+            radius="md"
+          />
         </Input.Wrapper>
         <Button
           loading={context.loading}
