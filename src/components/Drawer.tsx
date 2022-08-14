@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { showNotification } from "@mantine/notifications";
 import {
   Button,
@@ -31,6 +31,32 @@ export const Drawer = ({
   lat,
   lng,
 }: IDrawer) => {
+  const [distance, setDistance] = useState<number>(1);
+
+  useEffect(() => {
+    const circle =
+      window.google &&
+      new google.maps.Circle({
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+        map,
+        center: {
+          lat: lat,
+          lng: lng,
+        },
+        radius: distance * 1000,
+      });
+
+    return () => {
+      if (circle) {
+        circle.setMap(null);
+      }
+    };
+  }, [distance]);
+
   const GetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -175,6 +201,10 @@ export const Drawer = ({
           description="Specify how close the bars should be"
         >
           <Slider
+            value={distance}
+            onChange={(val) => {
+              setDistance(val);
+            }}
             thumbSize={20}
             color="violet"
             label={(val) => marks.find((mark) => mark.value === val)!.label}

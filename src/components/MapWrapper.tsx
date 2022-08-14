@@ -4,7 +4,8 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Map } from "./Map";
 import { Marker } from "./Marker";
 
-import { ReactComponent as PinIcon } from "../assets/icons/pin-3.svg";
+import pinIcon from "../assets/icons/pin-3-filled.svg";
+import { Button, Popover, Text } from "@mantine/core";
 
 interface MapWrapper {
   lat: number;
@@ -18,7 +19,9 @@ const render = (status: Status) => {
 };
 
 export const MapWrapper = ({ lat, lng, map, setMap }: MapWrapper) => {
-  //const MarkerPos = new window.google.maps.LatLng(lat, lng);
+  const markerPos = window.google
+    ? new window.google.maps.LatLng(lat, lng)
+    : null;
 
   return (
     <Wrapper
@@ -34,7 +37,7 @@ export const MapWrapper = ({ lat, lng, map, setMap }: MapWrapper) => {
         center={{ lat: lat, lng: lng }}
         zoom={15}
       >
-        <Marker position={{ lat: lat, lng: lng }} />
+        <Marker clickable={true} icon={pinIcon} position={markerPos} />
       </Map>
     </Wrapper>
   );

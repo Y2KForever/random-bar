@@ -18,9 +18,10 @@ const BoxStyle: CSSProperties = {
 
 function App() {
   const [opened, setOpened] = useState<boolean>(false);
-  const [lat, setLat] = useState<number>(59.3366156);
-  const [lng, setLng] = useState<number>(18.0698471);
+  const [lat, setLat] = useState<number>(59.33665973999843);
+  const [lng, setLng] = useState<number>(18.072035178187637);
   const [map, setMap] = useState<google.maps.Map | null>(null);
+
   return (
     <>
       <Drawer
