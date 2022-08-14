@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { showNotification } from "@mantine/notifications";
 import {
   Button,
@@ -9,29 +9,20 @@ import {
   Slider,
 } from "@mantine/core";
 
+import { Context } from "../App";
+import { IContext } from "../interface/interface";
+import { marks } from "../consts/mark";
+
 import { ReactComponent as MapPinIcon } from "../assets/icons/pin-3.svg";
 import { ReactComponent as ErrorIcon } from "../assets/icons/cross-circle.svg";
 
-interface IDrawer {
-  opened: boolean;
-  setOpened: (opened: boolean) => void;
-  setLat: (lat: number) => void;
-  lat: number;
-  lng: number;
-  setLng: (lng: number) => void;
-  map: google.maps.Map | null;
-}
-
-export const Drawer = ({
-  opened,
-  setOpened,
-  setLat,
-  setLng,
-  map,
-  lat,
-  lng,
-}: IDrawer) => {
+export const Drawer = () => {
   const [distance, setDistance] = useState<number>(1);
+  const context: IContext = useContext(Context);
+
+  if (!context) {
+    return <></>;
+  }
 
   useEffect(() => {
     const circle =
@@ -42,10 +33,10 @@ export const Drawer = ({
         strokeWeight: 2,
         fillColor: "#FF0000",
         fillOpacity: 0.35,
-        map,
+        map: context.map,
         center: {
-          lat: lat,
-          lng: lng,
+          lat: context.lat ?? context.startLat,
+          lng: context.lng ?? context.startLng,
         },
         radius: distance * 1000,
       });
@@ -55,14 +46,15 @@ export const Drawer = ({
         circle.setMap(null);
       }
     };
-  }, [distance]);
+  }, [distance, context.lat, context.lng]);
 
   const GetLocation = () => {
     if (navigator.geolocation) {
+      context.setLoading(true);
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          setLat(pos.coords.latitude);
-          setLng(pos.coords.longitude);
+          context.setLat(pos.coords.latitude);
+          context.setLng(pos.coords.longitude);
           var geocoder = new google.maps.Geocoder();
           geocoder.geocode(
             {
@@ -73,13 +65,15 @@ export const Drawer = ({
             },
             (res, status) => {
               if (status === "OK" && res && res.length > 0) {
-                if (map) {
-                  map.setCenter({
+                if (context.map) {
+                  context.map.setCenter({
                     lat: res[0].geometry.location.lat(),
                     lng: res[0].geometry.location.lng(),
                   });
+                  context.setLoading(false);
                 }
               } else {
+                context.setLoading(false);
                 showNotification({
                   title: "Error",
                   message: "Something went wrong. Please try again",
@@ -89,6 +83,7 @@ export const Drawer = ({
           );
         },
         (err) => {
+          context.setLoading(false);
           showNotification({
             title: "Error",
             message: err.message,
@@ -111,60 +106,17 @@ export const Drawer = ({
     }
   };
 
-  const marks = [
-    {
-      value: 1,
-      label: "1km",
-    },
-    {
-      value: 2,
-      label: "2km",
-    },
-    {
-      value: 3,
-      label: "3km",
-    },
-    {
-      value: 4,
-      label: "4km",
-    },
-    {
-      value: 5,
-      label: "5km",
-    },
-    {
-      value: 6,
-      label: "6km",
-    },
-    {
-      value: 7,
-      label: "7km",
-    },
-    {
-      value: 8,
-      label: "8km",
-    },
-    {
-      value: 9,
-      label: "9km",
-    },
-    {
-      value: 10,
-      label: "10km",
-    },
-  ];
-
   const searchLocation = () => {
-    if (map) {
-      var service = new google.maps.places.PlacesService(map);
+    if (context.map && context.lat && context.lng) {
+      var service = new google.maps.places.PlacesService(context.map);
       var req = {
-        location: new google.maps.LatLng(lat, lng),
-        radius: 1000,
+        location: new google.maps.LatLng(context.lat, context.lng),
+        radius: distance,
         type: "bar",
       };
       service.nearbySearch(req, (res, status) => {
         // HANDLE RESULT, AND RANDOMIZE A BAR, THEN MARK IT ON MAP.
-        // SHOULD ALSO REMAKE UI LUL
+        // TODO
       });
     }
   };
@@ -173,9 +125,9 @@ export const Drawer = ({
     <MantineDrawer
       overlayOpacity={0.55}
       overlayBlur={3}
-      opened={opened}
+      opened={context.opened}
       size="xl"
-      onClose={() => setOpened(!opened)}
+      onClose={() => context.setOpened(!context.opened)}
     >
       <Container>
         <Input.Wrapper
@@ -189,6 +141,7 @@ export const Drawer = ({
           <Input icon={<MapPinIcon />} variant="filled" radius="md" />
         </Input.Wrapper>
         <Button
+          loading={context.loading}
           color="violet"
           onClick={GetLocation}
           style={{ fontWeight: 400, marginBottom: 10 }}
@@ -201,6 +154,7 @@ export const Drawer = ({
           description="Specify how close the bars should be"
         >
           <Slider
+            disabled={!context.lat || !context.lng}
             value={distance}
             onChange={(val) => {
               setDistance(val);

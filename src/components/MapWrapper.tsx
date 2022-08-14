@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 import { Map } from "./Map";
@@ -6,22 +6,24 @@ import { Marker } from "./Marker";
 
 import pinIcon from "../assets/icons/pin-3-filled.svg";
 import { Button, Popover, Text } from "@mantine/core";
-
-interface MapWrapper {
-  lat: number;
-  lng: number;
-  map: google.maps.Map | null;
-  setMap: (map: google.maps.Map | null) => void;
-}
+import { Context } from "../App";
+import { IContext } from "../interface/interface";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 
-export const MapWrapper = ({ lat, lng, map, setMap }: MapWrapper) => {
-  const markerPos = window.google
-    ? new window.google.maps.LatLng(lat, lng)
-    : null;
+export const MapWrapper = () => {
+  const context: IContext = useContext(Context);
+
+  if (!context) {
+    return <></>;
+  }
+
+  const markerPos =
+    window.google && context.lat && context.lng
+      ? new window.google.maps.LatLng(context.lat, context.lng)
+      : null;
 
   return (
     <Wrapper
@@ -30,11 +32,14 @@ export const MapWrapper = ({ lat, lng, map, setMap }: MapWrapper) => {
       render={render}
     >
       <Map
-        lng={lng}
-        lat={lat}
-        map={map}
-        setMap={setMap}
-        center={{ lat: lat, lng: lng }}
+        lng={context.lng ?? context.startLat}
+        lat={context.lat ?? context.startLng}
+        map={context.map}
+        setMap={context.setMap}
+        center={{
+          lat: context.lat ?? context.startLat,
+          lng: context.lng ?? context.startLng,
+        }}
         zoom={15}
       >
         <Marker clickable={true} icon={pinIcon} position={markerPos} />
