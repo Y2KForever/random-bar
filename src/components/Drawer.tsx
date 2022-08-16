@@ -7,6 +7,9 @@ import {
   Drawer as MantineDrawer,
   Input,
   Slider,
+  Popover,
+  Text,
+  ActionIcon
 } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 
@@ -16,9 +19,11 @@ import { marks } from "../consts/mark";
 
 import { ReactComponent as MapPinIcon } from "../assets/icons/pin-3.svg";
 import { ReactComponent as ErrorIcon } from "../assets/icons/cross-circle.svg";
+import { ReactComponent as GpsIcon } from "../assets/icons/gps.svg";
 
 export const Drawer = () => {
   const inputRef = useRef<any>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [distance, setDistance] = useState<number>(1);
   const [locations, setLocations] = useState<any[] | null>(null);
   const [manualLocation, setManualLocation] = useState<string>("");
@@ -35,10 +40,12 @@ export const Drawer = () => {
       x.getPlacePredictions(
         {
           input: debouncedLocation,
+
         },
         (res, status) => {
           if (status === "OK" && res && res.length > 0) {
             setLocations(res);
+            setIsOpen(true);
           } else {
             if (res === null) {
               showNotification({
@@ -158,39 +165,86 @@ export const Drawer = () => {
       onClose={() => context.setOpened(!context.opened)}
     >
       <Container>
-        {/* ADD SEARCH CAPABILITY */}
         <Input.Wrapper
-          label="Location"
+          labelProps={{
+            style: {
+              width: "100%"
+            }
+          }}
+          label={
+            <div style={{ flexDirection: "row", display: "flex", alignItems: "center" }}>
+              <Text style={{ marginRight: "auto" }}>Location</Text>
+              <ActionIcon loading={context.loading} onClick={GetLocation}>
+                <GpsIcon />
+              </ActionIcon>
+            </div>
+          }
           description="Press button or set manual location"
           style={{
             marginTop: 20,
             marginBottom: 10,
           }}
         >
-          <Input
-            ref={inputRef}
-            value={manualLocation}
-            onChange={(event: any) =>
-              setManualLocation(event.currentTarget.value)
-            }
-            icon={<MapPinIcon />}
-            variant="filled"
-            radius="md"
-          />
+          <Popover width="target" opened={isOpen} onChange={setIsOpen}>
+            <Popover.Target>
+              <Input
+                ref={inputRef}
+                value={manualLocation}
+                onChange={(event: any) => setManualLocation(event.currentTarget.value)}
+                icon={<MapPinIcon />}
+                variant="filled"
+                radius="md"
+                onClick={() => {
+                  if (locations && locations.length > 0 && !isOpen) {
+                    setIsOpen(!isOpen);
+                  }
+                }}
+              />
+            </Popover.Target>
+            <Popover.Dropdown>
+              {locations &&
+                locations.map((d) => (
+                  <div
+                    key={d.place_id}
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                      var geocoder = new google.maps.Geocoder();
+                      geocoder.geocode(
+                        {
+                          placeId: d.place_id,
+                        },
+                        (res, status) => {
+                          if (status === "OK" && res && res.length > 0) {
+                            context.setLat(res[0].geometry.location.lat());
+                            context.setLng(res[0].geometry.location.lng());
+                            if (context.map) {
+                              context.map.setCenter({
+                                lat: res[0].geometry.location.lat(),
+                                lng: res[0].geometry.location.lng(),
+                              });
+
+                              context.setLoading(false);
+                            }
+                          } else {
+                            context.setLoading(false);
+                            showNotification({
+                              title: "Error",
+                              message: "Something went wrong. Please try again",
+                            });
+                          }
+                        },
+                      );
+                    }}
+                  >
+                    <Text>{d.description}</Text>
+                    <Divider sx={{ width: "100%" }} my="sm" />
+                  </div>
+                ))}
+            </Popover.Dropdown>
+          </Popover>
         </Input.Wrapper>
-        <Button
-          loading={context.loading}
-          color="violet"
-          onClick={GetLocation}
-          style={{ fontWeight: 400, marginBottom: 10 }}
-        >
-          Press to set location
-        </Button>
         <Divider />
-        <Input.Wrapper
-          label="Distance"
-          description="Specify how close the bars should be"
-        >
+        <Input.Wrapper label="Distance" description="Specify how close the bars should be">
           <Slider
             disabled={!context.lat || !context.lng}
             value={distance}
@@ -222,6 +276,6 @@ export const Drawer = () => {
           Roll the dice
         </Button>
       </Container>
-    </MantineDrawer>
+    </MantineDrawer >
   );
 };

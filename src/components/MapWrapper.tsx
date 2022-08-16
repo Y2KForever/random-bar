@@ -4,7 +4,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Map } from "./Map";
 import { Marker } from "./Marker";
 
-import pinIcon from "../assets/icons/pin-3-filled.svg";
+import pinIcon from "../assets/icons/pin-2.svg";
 import { Context } from "../App";
 import { IContext } from "../interface/interface";
 
