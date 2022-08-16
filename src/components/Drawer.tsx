@@ -51,6 +51,9 @@ export const Drawer = () => {
               showNotification({
                 title: "Error",
                 message: "Could not find address",
+                color: "pink",
+                icon: <ErrorIcon style={{ transform: "scale(1.4)" }} />,
+                radius: "lg",
               });
             }
           }
@@ -112,6 +115,9 @@ export const Drawer = () => {
                 showNotification({
                   title: "Error",
                   message: "Something went wrong. Please try again",
+                  color: "pink",
+                  icon: <ErrorIcon style={{ transform: "scale(1.4)" }} />,
+                  radius: "lg",
                 });
               }
             }
@@ -122,6 +128,9 @@ export const Drawer = () => {
           showNotification({
             title: "Error",
             message: err.message,
+            color: "pink",
+            icon: <ErrorIcon style={{ transform: "scale(1.4)" }} />,
+            radius: "lg",
           });
         },
         {
@@ -230,6 +239,9 @@ export const Drawer = () => {
                             showNotification({
                               title: "Error",
                               message: "Something went wrong. Please try again",
+                              color: "pink",
+                              icon: <ErrorIcon style={{ transform: "scale(1.4)" }} />,
+                              radius: "lg",
                             });
                           }
                         },
