@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { Global, MantineProvider } from "@mantine/core";
+import { Global, MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 
-function MyGlobalStyles() {
+export const MyGlobalStyles = () => {
   return (
     <Global
       styles={(theme) => ({
@@ -19,11 +19,8 @@ function MyGlobalStyles() {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <MantineProvider theme={{ colorScheme: "dark" }}>
-      <MyGlobalStyles />
-      <NotificationsProvider position="top-center" autoClose={false}>
-        <App />
-      </NotificationsProvider>
-    </MantineProvider>
-  </React.StrictMode>
+    <NotificationsProvider position="top-center" autoClose={false}>
+      <App />
+    </NotificationsProvider>
+  </React.StrictMode >
 );

@@ -4,7 +4,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Map } from "./Map";
 import { Marker } from "./Marker";
 
-import pinIcon from "../assets/icons/pin-2.svg";
+import pinIcon from "../assets/icons/pin.svg";
 import { Context } from "../App";
 import { IContext } from "../interface/interface";
 
@@ -39,7 +39,7 @@ export const MapWrapper = () => {
           lat: context.lat ?? context.startLat,
           lng: context.lng ?? context.startLng,
         }}
-        zoom={15}
+        zoom={context.zoom}
       >
         <Marker clickable={true} icon={pinIcon} position={markerPos} />
       </Map>

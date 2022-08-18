@@ -1,5 +1,9 @@
 export const marks = [
   {
+    value: 0.5,
+    label: "0.5km",
+  },
+  {
     value: 1,
     label: "1km",
   },

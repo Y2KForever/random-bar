@@ -24,7 +24,7 @@ import { ReactComponent as GpsIcon } from "../assets/icons/gps.svg";
 export const Drawer = () => {
   const inputRef = useRef<any>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [distance, setDistance] = useState<number>(1);
+  const [distance, setDistance] = useState<number>(0.5);
   const [locations, setLocations] = useState<any[] | null>(null);
   const [manualLocation, setManualLocation] = useState<string>("");
   const [debouncedLocation] = useDebouncedValue(manualLocation, 600);
@@ -67,10 +67,10 @@ export const Drawer = () => {
       window.google &&
       new google.maps.Circle({
         strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
+        strokeOpacity: 0.3,
+        strokeWeight: 1,
         fillColor: "#FF0000",
-        fillOpacity: 0.35,
+        fillOpacity: 0.2,
         map: context.map,
         center: {
           lat: context.lat ?? context.startLat,
@@ -265,10 +265,10 @@ export const Drawer = () => {
             }}
             thumbSize={20}
             color="violet"
-            label={(val) => marks.find((mark) => mark.value === val)!.label}
-            defaultValue={1}
-            step={1}
-            min={1}
+            defaultValue={0.5}
+            step={distance > 0.5 ? 1 : 0.5}
+
+            min={0.5}
             max={10}
             marks={marks}
             style={{ marginTop: 10 }}

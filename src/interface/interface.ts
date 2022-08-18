@@ -1,3 +1,5 @@
+import { ColorScheme } from "@mantine/core";
+
 export interface IContext {
   map: google.maps.Map | null;
   setMap: (map: google.maps.Map) => void;
@@ -13,4 +15,7 @@ export interface IContext {
   setOpened: (open: boolean) => void;
   distance: number;
   setDistance: (distnace: number) => void;
+  zoom: number;
+  setZoom: (zoom: number) => void;
+  theme: ColorScheme;
 }
