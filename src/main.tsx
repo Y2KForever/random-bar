@@ -12,6 +12,9 @@ export const MyGlobalStyles = () => {
         "*": {
           fontFamily: "MADE TOMMY !important",
         },
+        "body": {
+          overflow: "hidden"
+        }
       })}
     />
   );

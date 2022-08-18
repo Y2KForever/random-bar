@@ -1,22 +1,12 @@
 /// <reference types="vite-plugin-svgr/client" />
-import React, { CSSProperties, useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 import "./index.css";
-import { Box, ActionIcon, Loader, SegmentedControl, ColorSchemeProvider, ColorScheme, MantineProvider } from "@mantine/core";
-
-import { ReactComponent as Menu } from "./assets/icons/align-justify-2.svg";
+import { Box, Loader, ColorSchemeProvider, ColorScheme, MantineProvider, } from "@mantine/core";
 
 import { MapWrapper } from "./components/MapWrapper";
 import { Drawer } from "./components/Drawer";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { MyGlobalStyles } from "./main";
-
-const BoxStyle: CSSProperties = {
-  zIndex: 1,
-  position: "absolute",
-  background: "transparent",
-  width: 50,
-  height: 50,
-};
 
 export const Context: any = createContext(null);
 
@@ -58,7 +48,6 @@ function App(props: any) {
             theme: colorScheme
           }}
         >
-          <ThemeToggle />
           {loading && (
             <Loader
               style={{ zIndex: 1, position: "absolute", top: "50%", left: "50%" }}
@@ -66,6 +55,10 @@ function App(props: any) {
             />
           )}
           <Drawer />
+          {/* 
+          <ThemeToggle /> 
+            DISABLED FOR NOW.
+          */}
           <MapWrapper />
         </Context.Provider>
       </MantineProvider>

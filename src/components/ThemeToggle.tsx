@@ -9,10 +9,12 @@ export const ThemeToggle = () => {
   return (
     <SegmentedControl
       sx={{
+        zIndex: 1,
         position: "absolute",
-        backgroundColor: "#fff",
+        backgroundColor: colorScheme === "dark" ? "#fff" : "#2c2e33",
         width: 180,
-        right: 0
+        right: 10,
+        top: 10,
       }}
       value={colorScheme}
       onChange={(value: 'light' | 'dark') => toggleColorScheme(value)}
