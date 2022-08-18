@@ -41,7 +41,9 @@ export const MapWrapper = () => {
         }}
         zoom={context.zoom}
       >
-        <Marker clickable={true} icon={pinIcon} position={markerPos} />
+        {/* REPLACE AND USE AS BAR LOCATION ICON INSTEAD. */}
+        {/* <Marker clickable={true} icon={pinIcon} position={markerPos} /> */}
+        <></>
       </Map>
     </Wrapper>
   );

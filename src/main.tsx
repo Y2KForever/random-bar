@@ -18,7 +18,7 @@ export const MyGlobalStyles = () => {
       })}
     />
   );
-}
+};
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
