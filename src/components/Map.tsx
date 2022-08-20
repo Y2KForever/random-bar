@@ -11,16 +11,7 @@ interface IMap extends google.maps.MapOptions {
   lng: number;
 }
 
-export const Map: React.FC<IMap> = ({
-  center,
-  zoom,
-  setMap,
-  map,
-  children,
-  lat,
-  lng,
-  ...options
-}: IMap) => {
+export const Map: React.FC<IMap> = ({ center, zoom, setMap, map, children, lat, lng, ...options }: IMap) => {
   const ref: any = useRef();
 
   useEffect(() => {
@@ -31,6 +22,7 @@ export const Map: React.FC<IMap> = ({
           zoom,
           disableDefaultUI: true,
           zoomControl: true,
+          clickableIcons: false,
           keyboardShortcuts: false,
           styles: [
             { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
@@ -118,10 +110,10 @@ export const Map: React.FC<IMap> = ({
               stylers: [{ color: "#17263c" }],
             },
           ],
-        })
+        }),
       );
     }
-  }, [ref, map, lat, lng]);
+  }, [ref, map, lat, lng, center]);
 
   useDeepCompareEffectForMaps(() => {
     if (map) {

@@ -7,5 +7,5 @@
   "printWidth": 120,
   "arrowParens": "always",
   "useTabs": false,
-  "parser":"typescript"
+  "parser": "typescript"
 }

@@ -12,9 +12,9 @@ export const MyGlobalStyles = () => {
         "*": {
           fontFamily: "MADE TOMMY !important",
         },
-        "body": {
-          overflow: "hidden"
-        }
+        body: {
+          overflow: "hidden",
+        },
       })}
     />
   );
@@ -22,8 +22,6 @@ export const MyGlobalStyles = () => {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <NotificationsProvider position="top-center" autoClose={false}>
-      <App />
-    </NotificationsProvider>
-  </React.StrictMode >
+    <App />
+  </React.StrictMode>,
 );

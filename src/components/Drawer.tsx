@@ -169,7 +169,7 @@ export const Drawer = () => {
     <MantineDrawer
       overlayOpacity={0.55}
       overlayBlur={3}
-      opened={context.opened}
+      opened={true}
       size="xl"
       onClose={() => context.setOpened(!context.opened)}
     >

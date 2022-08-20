@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
+import { IContext, IBarContext } from "../interface/interface";
+import { Context } from "../App";
+import { BarContext } from "./Dice";
 
 import { Map } from "./Map";
 import { Marker } from "./Marker";
 
 import pinIcon from "../assets/icons/pin.svg";
-import { Context } from "../App";
-import { IContext } from "../interface/interface";
+import { Box, Popover, Tooltip } from "@mantine/core";
+import { Info } from "./Info";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -20,8 +24,8 @@ export const MapWrapper = () => {
   }
 
   const markerPos =
-    window.google && context.lat && context.lng
-      ? new window.google.maps.LatLng(context.lat, context.lng)
+    window.google && context.barLat && context.barLng
+      ? new window.google.maps.LatLng(context.barLat, context.barLng)
       : null;
 
   return (
@@ -31,19 +35,17 @@ export const MapWrapper = () => {
       render={render}
     >
       <Map
-        lng={context.lng ?? context.startLat}
-        lat={context.lat ?? context.startLng}
+        lng={context.barLng ?? context.lng ?? context.startLng}
+        lat={context.barLat ?? context.lat ?? context.startLat}
         map={context.map}
         setMap={context.setMap}
         center={{
-          lat: context.lat ?? context.startLat,
-          lng: context.lng ?? context.startLng,
+          lat: context.barLat ?? context.lat ?? context.startLat,
+          lng: context.barLng ?? context.lng ?? context.startLng,
         }}
         zoom={context.zoom}
       >
-        {/* REPLACE AND USE AS BAR LOCATION ICON INSTEAD. */}
-        {/* <Marker clickable={true} icon={pinIcon} position={markerPos} /> */}
-        <></>
+        <Marker clickable={true} icon={pinIcon} position={markerPos} />
       </Map>
     </Wrapper>
   );

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { Context } from "../App";
+import { IContext } from "../interface/interface";
 
 export const Marker: React.FC<google.maps.MarkerOptions> = (options) => {
+  const context: IContext = useContext(Context);
   const [marker, setMarker] = React.useState<google.maps.Marker>();
 
   React.useEffect(() => {
@@ -18,6 +22,9 @@ export const Marker: React.FC<google.maps.MarkerOptions> = (options) => {
   React.useEffect(() => {
     if (marker) {
       marker.setOptions(options);
+      marker.addListener("click", () => {
+        context.setOpened(!context.opened);
+      });
     }
   }, [marker, options]);
 

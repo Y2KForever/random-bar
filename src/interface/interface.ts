@@ -18,4 +18,24 @@ export interface IContext {
   zoom: number;
   setZoom: (zoom: number) => void;
   theme: ColorScheme;
+  showing: "location" | "distance" | "roll";
+  setShowing: (showing: "location" | "distance" | "roll") => void;
+  name: string;
+  setName: (name: string) => void;
+  url?: string | null;
+  setUrl: (url: string | undefined) => void;
+  image?: string | null;
+  setImage: (image: string) => void;
+  placeId?: string;
+  setPlaceId: (placeId: string | undefined) => void;
+  rating?: number | null;
+  setRating: (rating: number | undefined) => void;
+  priceLevel?: number | null;
+  setPriceLevel: (priceLevel: number | undefined) => void;
+  barLat: number;
+  setBarLat: (lat: number) => void;
+  barLng: number;
+  setBarLng: (lng: number) => void;
 }
+
+export interface IBarContext {}

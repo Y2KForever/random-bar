@@ -55,3 +55,13 @@ body,
   width: 100%;
   height: 100vh;
 }
+
+.ignore-padding {
+  padding-top: 0 !important
+}
+
+.mantine-Badge-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
