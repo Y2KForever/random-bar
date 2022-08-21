@@ -25,8 +25,6 @@ export const MapWrapper = () => {
       ? new window.google.maps.LatLng(context.barLat, context.barLng)
       : null;
 
-  console.log(import.meta.env.VITE_GOOGLE_MAPS_API_KEY_PROD);
-
   return (
     <Wrapper
       apiKey={
