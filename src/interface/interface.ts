@@ -33,9 +33,9 @@ export interface IContext {
   priceLevel?: number | null;
   setPriceLevel: (priceLevel: number | undefined) => void;
   barLat: number;
-  setBarLat: (lat: number) => void;
+  setBarLat: (lat: number | undefined) => void;
   barLng: number;
-  setBarLng: (lng: number) => void;
+  setBarLng: (lng: number | undefined) => void;
   showRollAgain: boolean;
   setShowRollAgain: (rollAgain: boolean) => void;
 }

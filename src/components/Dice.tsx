@@ -101,6 +101,8 @@ export const Dice = () => {
     context.setOpened(false);
     context.setLat(context.startLat);
     context.setLng(context.startLng);
+    context.setBarLat(undefined);
+    context.setBarLng(undefined);
     if (context.map) {
       context.map.setCenter({
         lat: context.startLat,
@@ -110,6 +112,7 @@ export const Dice = () => {
     context.setShowing("location");
     context.setLoading(false);
     context.setShowRollAgain(false);
+    context.setDistance(0.5);
     // Clear previous markers?
   };
 
