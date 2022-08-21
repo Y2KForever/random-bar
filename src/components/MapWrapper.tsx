@@ -27,7 +27,13 @@ export const MapWrapper = () => {
 
   return (
     <Wrapper
-      apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+      apiKey={
+        import.meta.env.DEV
+          ? import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV
+          : import.meta.env.PROD
+          ? import.meta.env.VITE_GOOGLE_MAPS_API_KEY_PROD
+          : ""
+      }
       libraries={["places", "geometry", "localContext"]}
       render={render}
     >
