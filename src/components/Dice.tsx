@@ -18,7 +18,6 @@ export const Dice = () => {
   }
 
   const searchLocation = async () => {
-    const pagetoken = 20;
     if (context.map && context.lat && context.lng && context.distance) {
       var service = new google.maps.places.PlacesService(context.map);
       var req = {
@@ -27,7 +26,6 @@ export const Dice = () => {
         type: "bar",
         opennow: true,
         rankby: "distance",
-        pagetoken: pagetoken,
       };
       service.nearbySearch(req, async (res, status, pagination) => {
         context.setLoading(true);
@@ -111,16 +109,32 @@ export const Dice = () => {
     }
     context.setShowing("location");
     context.setLoading(false);
+    context.setShowRollAgain(false);
+    // Clear previous markers?
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "row", marginTop: 10 }}>
-      <Button onClick={reset} style={{ marginTop: 0, marginLeft: "none" }}>
-        Reset
-      </Button>
-      <Button onClick={searchLocation} style={{ marginTop: 0 }}>
-        Roll the dice
-      </Button>
+    <div style={{ display: "flex", flexDirection: "row", marginTop: context.showRollAgain ? 0 : 10 }}>
+      {context.showRollAgain && (
+        <Button onClick={reset} style={{ marginTop: 0, marginLeft: "none" }}>
+          Reset
+        </Button>
+      )}
+      {context.showRollAgain ? (
+        <Button onClick={searchLocation} style={{ marginTop: 0 }}>
+          Roll again
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            context.setShowRollAgain(true);
+            searchLocation();
+          }}
+          style={{ marginTop: 0 }}
+        >
+          Roll the dice
+        </Button>
+      )}
     </div>
   );
 };

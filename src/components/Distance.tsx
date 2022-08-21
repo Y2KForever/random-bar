@@ -45,24 +45,28 @@ export const Distance = ({ styles }: IDistance) => {
 
   return (
     <>
-      <Input.Wrapper label="Distance" description="Specify how close the bars should be" style={styles ?? undefined}>
-        <Slider
-          disabled={!context.lat || !context.lng}
-          value={context.distance}
-          onChange={(val) => {
-            context.setDistance(val);
-          }}
-          thumbSize={20}
-          color="violet"
-          defaultValue={0.5}
-          step={0.5}
-          min={0.5}
-          max={10}
-          marks={marks}
-          style={{ marginTop: 10 }}
-          styles={{ markLabel: { display: "none" } }}
-        />
-      </Input.Wrapper>
+      {!context.showRollAgain && (
+        <Input.Wrapper label="Distance" description="Specify how close the bars should be" style={styles ?? undefined}>
+          <Slider
+            disabled={!context.lat || !context.lng}
+            value={context.distance}
+            onChange={(val) => {
+              context.setDistance(val);
+            }}
+            label={(value) => `${value}km`}
+            labelAlwaysOn
+            thumbSize={20}
+            color="violet"
+            defaultValue={0.5}
+            step={0.5}
+            min={0.5}
+            max={5}
+            marks={marks}
+            style={{ marginTop: 10 }}
+            styles={{ markLabel: { display: "none" } }}
+          />
+        </Input.Wrapper>
+      )}
       <Dice />
     </>
   );

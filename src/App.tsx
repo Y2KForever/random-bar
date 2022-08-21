@@ -23,6 +23,7 @@ function App(props: any) {
   const [placeId, setPlaceId] = useState<string | undefined>(undefined);
   const [rating, setRating] = useState<number | undefined>(undefined);
   const [priceLevel, setPriceLevel] = useState<number | undefined>(undefined);
+  const [rollAgain, setRollAgain] = useState<boolean>(false);
   const [barLat, setBarLat] = useState<number | undefined>(undefined);
   const [barLng, setBarLng] = useState<number | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
@@ -81,6 +82,8 @@ function App(props: any) {
               setShowing: setShowing,
               image: image,
               setImage: setImage,
+              showRollAgain: rollAgain,
+              setShowRollAgain: setRollAgain,
             }}
           >
             {loading && (

@@ -62,8 +62,6 @@ export const Info = () => {
   const [opened, setOpened] = useState(false);
   const { classes, theme } = useStyles();
   const context: IContext = useContext(Context);
-  const service = new window.google.maps.DirectionsService();
-  const directionRender = new google.maps.DirectionsRenderer();
 
   const getDirections = (mode: string) => {
     openInNewTab(
@@ -77,9 +75,9 @@ export const Info = () => {
       sx={{
         zIndex: 1,
         position: "absolute",
-        top: "22%",
+        top: "160px",
         left: "50%",
-        transform: "translate(-50%, -22%)",
+        transform: "translate(-50%, -80px)",
         width: 370,
         paddingTop: 0,
       }}

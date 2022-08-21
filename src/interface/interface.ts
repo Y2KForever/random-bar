@@ -36,6 +36,8 @@ export interface IContext {
   setBarLat: (lat: number) => void;
   barLng: number;
   setBarLng: (lng: number) => void;
+  showRollAgain: boolean;
+  setShowRollAgain: (rollAgain: boolean) => void;
 }
 
 export interface IBarContext {}
