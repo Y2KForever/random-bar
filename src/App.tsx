@@ -44,7 +44,7 @@ function App(props: any) {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme: colorScheme }}>
-        <NotificationsProvider position="bottom-center" autoClose={false}>
+        <NotificationsProvider position="bottom-center">
           <MyGlobalStyles />
           <Context.Provider
             value={{
