@@ -5,6 +5,7 @@
 # Random bar
 Random bar is a web application built with Vite, React and Google Maps.
 
+[![Deploy](https://github.com/Y2KForever/random-bar/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/Y2KForever/random-bar/actions/workflows/workflow.yml)
 <p>
 <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
