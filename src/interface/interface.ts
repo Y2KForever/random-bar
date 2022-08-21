@@ -38,6 +38,6 @@ export interface IContext {
   setBarLng: (lng: number | undefined) => void;
   showRollAgain: boolean;
   setShowRollAgain: (rollAgain: boolean) => void;
+  locationList: any[];
+  setLocationList: (locationList: any[]) => void;
 }
-
-export interface IBarContext {}

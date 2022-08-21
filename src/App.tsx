@@ -33,6 +33,7 @@ function App(props: any) {
   const [startLng] = useState<number>(18.072035178187637);
   const [lat, setLat] = useState<number | undefined>(undefined);
   const [lng, setLng] = useState<number | undefined>(undefined);
+  const [locationList, setLocationList] = useState<any[]>([]);
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [showing, setShowing] = useState<"location" | "distance" | "roll">("location");
   const [zoom, setZoom] = useState<number>(15);
@@ -84,11 +85,13 @@ function App(props: any) {
               setImage: setImage,
               showRollAgain: rollAgain,
               setShowRollAgain: setRollAgain,
+              locationList: locationList,
+              setLocationList: setLocationList,
             }}
           >
             {loading && (
               <Loader
-                style={{ zIndex: 1, position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+                style={{ zIndex: 2, position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
                 color="violet"
               />
             )}

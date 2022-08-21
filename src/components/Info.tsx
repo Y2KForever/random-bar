@@ -83,9 +83,11 @@ export const Info = () => {
       }}
     >
       <Card withBorder radius="md" p="md" className={(classes.card, "ignore-padding")}>
-        <Badge className={classes.rating} variant="gradient" gradient={{ from: "yellow", to: "red" }}>
-          {context.rating ? `${context.rating} / 5` : null}
-        </Badge>
+        {context.rating && (
+          <Badge className={classes.rating} variant="gradient" gradient={{ from: "yellow", to: "red" }}>
+            {context.rating ? `${context.rating} / 5` : null}
+          </Badge>
+        )}
         <Card.Section sx={{ minHeight: 20 }}>
           {context.image && <Image src={context.image} alt="Bar photo" height={180} />}
         </Card.Section>
