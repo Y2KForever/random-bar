@@ -2,6 +2,10 @@ name: Deploy to S3
 on:
   push:
     branches: main
+
+env:
+  VITE_GOOOGLE_MAPS_API_KEY_PROD: ${{ secrets.VITE_GOOOGLE_MAPS_API_KEY_PROD}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
