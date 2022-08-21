@@ -113,7 +113,6 @@ export const Dice = () => {
     context.setLoading(false);
     context.setShowRollAgain(false);
     context.setDistance(0.5);
-    // Clear previous markers?
   };
 
   return (

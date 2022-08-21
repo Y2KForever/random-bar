@@ -1,16 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-import { IContext, IBarContext } from "../interface/interface";
+import { IContext } from "../interface/interface";
 import { Context } from "../App";
-import { BarContext } from "./Dice";
 
 import { Map } from "./Map";
 import { Marker } from "./Marker";
 
 import pinIcon from "../assets/icons/pin.svg";
-import { Box, Popover, Tooltip } from "@mantine/core";
-import { Info } from "./Info";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -30,7 +27,7 @@ export const MapWrapper = () => {
 
   return (
     <Wrapper
-      apiKey="AIzaSyCpX4I27e-tWIns8PRakXqkcPSqKuNPP1o"
+      apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       libraries={["places", "geometry", "localContext"]}
       render={render}
     >
