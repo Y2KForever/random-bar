@@ -18,4 +18,4 @@ jobs:
       - name: Deploy app build to S3 bucket
         run: aws s3 sync ./dist/ s3://random-bar-niklas-hansen-dev --delete --include "*"
       - name: Invalidate on cloudfront
-        run: aws cloudfront create-invalidation --distrubtion-id E1LFCFREXCIY2W --paths="/*"
+        run: aws cloudfront create-invalidation --distribution-id E1LFCFREXCIY2W --paths="/*"
