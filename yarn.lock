@@ -331,9 +331,9 @@
   dependencies:
     "@googlemaps/js-api-loader" "^1.13.2"
 
-"@googlemaps/typescript-guards@^2.0.1":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@googlemaps/typescript-guards/-/typescript-guards-2.0.2.tgz"
+"@googlemaps/typescript-guards@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@googlemaps/typescript-guards/-/typescript-guards-2.0.3.tgz#fd718248f275095dd9b23af05d938a18be413cf0"
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
@@ -577,10 +577,9 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-
-"@types/node@^18.6.5":
-  version "18.7.8"
-  resolved "https://registry.npmjs.org/@types/node/-/node-18.7.8.tgz"
+"@types/node@^18.14.2":
+  version "18.14.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.14.2.tgz#c076ed1d7b6095078ad3cf21dfeea951842778b1"
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -948,8 +947,9 @@ jsesc@^2.5.1:
 
 json-parse-even-better-errors@^2.3.0:
   version "2.3.1"
-  resolved "https://registry.npmjs.org/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz"
+  resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz#7c47805a94319928e05777405dc12e1f7a4ee02d"
 
+json5@^2.2.1:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
 
