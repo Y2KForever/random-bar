@@ -1175,9 +1175,9 @@ tslib@^1.0.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
 
-typescript@^4.6.4:
-  version "4.7.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.7.4.tgz"
+typescript@^4.9.5:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
 
 update-browserslist-db@^1.0.5:
   version "1.0.5"
