@@ -577,6 +577,7 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
+
 "@types/node@^18.6.5":
   version "18.7.8"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.7.8.tgz"
@@ -949,7 +950,6 @@ json-parse-even-better-errors@^2.3.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz"
 
-json5@^2.2.1:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
 
