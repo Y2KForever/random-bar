@@ -125,7 +125,9 @@ export const Map: React.FC<IMap> = ({ center, zoom, setMap, map, children, lat, 
     <div ref={ref} id="map" style={{ height: "100vh" }}>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, { map });
+          if (map) {
+            return React.cloneElement(child, { map } as any);
+          }
         }
       })}
     </div>
