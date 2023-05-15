@@ -700,9 +700,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/google.maps@^3.49.1", "@types/google.maps@^3.49.2":
-  version "3.49.2"
-  resolved "https://registry.npmjs.org/@types/google.maps/-/google.maps-3.49.2.tgz"
+"@types/google.maps@^3.49.1", "@types/google.maps@^3.53.1":
+  version "3.53.1"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.53.1.tgz#c1fb7325eaa5af3574aedb9390d16798be0dad00"
 
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
