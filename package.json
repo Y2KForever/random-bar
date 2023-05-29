@@ -25,7 +25,7 @@
   "devDependencies": {
     "@googlemaps/typescript-guards": "^2.0.3",
     "@types/google-map-react": "^2.1.7",
-    "@types/google.maps": "^3.49.2",
+    "@types/google.maps": "^3.53.2",
     "@types/node": "^18.14.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.11",
