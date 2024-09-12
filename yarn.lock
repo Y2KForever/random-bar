@@ -407,11 +407,9 @@
     "@floating-ui/dom" "^0.5.3"
     use-isomorphic-layout-effect "^1.1.1"
 
-"@googlemaps/js-api-loader@^1.12.3", "@googlemaps/js-api-loader@^1.13.2", "@googlemaps/js-api-loader@^1.7.0":
-  version "1.14.3"
-  resolved "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.14.3.tgz"
-  dependencies:
-    fast-deep-equal "^3.1.3"
+"@googlemaps/js-api-loader@^1.12.3", "@googlemaps/js-api-loader@^1.13.2", "@googlemaps/js-api-loader@^1.13.8":
+  version "1.16.8"
+  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.16.8.tgz#1595a2af80ca07e551fc961d921a2437d1cb3643"
 
 "@googlemaps/react-wrapper@^1.1.35":
   version "1.1.35"
@@ -662,9 +660,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.0.tgz#5fb2e536c1ae9bf35366eed879e827fa59ca41c2"
 
-"@types/google-map-react@^2.1.7":
-  version "2.1.7"
-  resolved "https://registry.npmjs.org/@types/google-map-react/-/google-map-react-2.1.7.tgz"
+"@types/google-map-react@^2.1.10":
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/@types/google-map-react/-/google-map-react-2.1.10.tgz#197a2f520563e0291bc311f151e05ec34b665cf7"
   dependencies:
     "@types/react" "*"
 
@@ -699,15 +697,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "18.2.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.7.tgz#dfb4518042a3117a045b8c222316f83414a783b3"
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^18.0.15":
+"@types/react@*", "@types/react@^18.0.15":
   version "18.2.55"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.55.tgz#38141821b7084404b5013742bc4ae08e44da7a67"
   dependencies:
@@ -980,10 +970,6 @@ eventemitter3@^4.0.4:
   version "4.0.7"
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz"
 
-fast-deep-equal@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"
-
 fast-equals@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/fast-equals/-/fast-equals-5.0.1.tgz#a4eefe3c5d1c0d021aeed0bc10ba5e0c12ee405d"
@@ -1008,11 +994,11 @@ globals@^11.1.0:
   version "11.12.0"
   resolved "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
 
-google-map-react@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/google-map-react/-/google-map-react-2.2.0.tgz"
+google-map-react@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-2.2.1.tgz#54c45899966fb0000e04cde2d5ca44ad728bdba6"
   dependencies:
-    "@googlemaps/js-api-loader" "^1.7.0"
+    "@googlemaps/js-api-loader" "^1.13.8"
     "@mapbox/point-geometry" "^0.1.0"
     eventemitter3 "^4.0.4"
     prop-types "^15.7.2"

@@ -16,7 +16,7 @@
     "@mantine/notifications": "^5.1.1",
     "@vitejs/plugin-react": "^2.0.0",
     "fast-equals": "^5.0.1",
-    "google-map-react": "^2.2.0",
+    "google-map-react": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-places-autocomplete": "^3.4.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@googlemaps/typescript-guards": "^2.0.3",
-    "@types/google-map-react": "^2.1.7",
+    "@types/google-map-react": "^2.1.10",
     "@types/google.maps": "^3.55.3",
     "@types/node": "^18.14.2",
     "@types/react": "^18.0.15",
